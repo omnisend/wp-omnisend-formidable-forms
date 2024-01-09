@@ -1,0 +1,64 @@
+#omnisend_settings_settings .omnisend-formidable-forms-row {
+    width: calc(50% - 35px);
+    display: inline-block;
+    padding: 3px 15px;
+}
+
+#omnisend_settings_settings .omnisend-formidable-header {
+    padding: 15px;
+}
+
+#omnisend_settings_settings .omnisend-formidable-header .switch {
+    display: block;
+}
+
+#omnisend_settings_settings .omnisend-formidable-header .switch label{
+    color: #1E2423;
+    user-select: none;
+}
+
+#omnisend_settings_settings .omnisend-formidable-header .information {
+    margin-top: 0;
+    margin-left: 24px;
+    color: #1E2423;
+    font-weight: 300;
+}
+
+#omnisend_settings_settings .omnisend-formidable-header .information-header {
+    text-transform: none;
+    color: #000;
+    margin-top: 20px;
+    padding-top: 0;
+    border: none;
+    margin-bottom: 5px;
+}
+
+#omnisend_settings_settings h2 {
+    color: #191919;
+}
+
+#omnisend_settings_settings .option-two span {
+    color: #000;
+    font-weight: 300;
+    margin-bottom: 5px;
+    display: block;
+}
+
+#omnisend_settings_settings a.omnisend-url {
+    color: #35938F;
+    text-decoration-line: underline;
+}
+
+#omnisend_settings_settings .additional-information .information {
+    margin-left: 0;
+}
+
+#omnisend_settings_settings .additional-information .information-help {
+    display: block;
+}
+
+#omnisend_settings_settings input {
+    margin-top: 0;
+    width: 14px;
+    height: 16px;
+}
