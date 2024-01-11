@@ -37,7 +37,7 @@ class Omnisend_FormidableFormsAddOn_Bootstrap {
 	 * Register actions for the Omnisend Formidable Forms Add-On.
 	 *
 	 * @param array $actions The array of actions.
-	 * 
+	 *
 	 * @return array The modified array of actions.
 	 */
 	public static function register_actions( $actions ) {
@@ -114,7 +114,7 @@ class Omnisend_FormidableFormsAddOn_Bootstrap {
 	 * Display a notice for the missing Omnisend For WooCommerce Plugin.
 	 */
 	public static function omnisend_woocommerce_notice() {
-		echo '<div class="error"><p>' . esc_html__( 'Plugin Omnisend for WooCommerce is deactivated. Please install and activate ', 'omnisend-formidable' ) . '<a href="https://wordpress.org/plugins/omnisend-connect/">' . esc_html__( 'Omnisend for Woocommerce plugin.', 'omnisend-formidable' ) . '</a></p></div>';
+		echo '<div class="error"><p>' . esc_html__( 'Plugin Omnisend for WooCommerce is deactivated. Please install and activate', 'omnisend-formidable' ) . '<a href="https://wordpress.org/plugins/omnisend-connect/">' . esc_html__( 'Omnisend for Woocommerce plugin.', 'omnisend-formidable' ) . '</a></p></div>';
 	}
 
 	/**

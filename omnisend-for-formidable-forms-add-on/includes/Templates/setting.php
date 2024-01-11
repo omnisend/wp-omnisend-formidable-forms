@@ -1,3 +1,11 @@
+<?php
+	/**
+	 * Setting template for Omnisend settings
+	 *
+	 * @package Omnisend\FormidableFormsAddon\Provider\OmnisendActionSettingsProvider
+	 */
+
+?>
 <div class = 'omnisend-formidable-forms-row'>
 	<label for = '<?php echo esc_attr( $key ); ?>'>
 		<?php echo esc_html( $name ); ?>

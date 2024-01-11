@@ -1,6 +1,14 @@
 <?php
+	/**
+	 * Header template for Omnisend settings
+	 *
+	 * @package Omnisend\FormidableFormsAddon\Provider\OmnisendActionSettingsProvider
+	 */
+
+	use Omnisend\FormidableFormsAddon\Provider\OmnisendActionSettingsProvider;
+
 	$setting_code = $this->get_enabled_code_by_form_id( $values['id'] );
-	$welcome_code = $this::get_enabled_welcome_by_form_id( $values['id'] );
+	$welcome_code = OmnisendActionSettingsProvider::get_enabled_welcome_by_form_id( $values['id'] );
 ?>
 
 <div class = 'omnisend-formidable-header'>

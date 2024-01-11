@@ -11,6 +11,7 @@ namespace Omnisend\FormidableFormsAddon\Actions;
 
 use FrmFormAction;
 use FrmForm;
+use FrmEntry;
 use Omnisend\FormidableFormsAddon\Builder\RequestBodyBuilder;
 use Omnisend\FormidableFormsAddon\Mapper\FormFieldsMapper;
 use Omnisend\FormidableFormsAddon\OmnisendResponse;
@@ -102,8 +103,14 @@ class OmnisendAddOnAction extends FrmFormAction {
 	 * @return void
 	 */
 	public function process( int $entry_id, int $form_id ): void {
+		$args = FrmEntry::getOne( $entry_id, true );
+
+		if ( ! $args || ! property_exists( $args, 'metas' ) ) {
+			return;
+		}
+
 		$is_enabled = get_option( $this->settings->get_enabled_code_by_form_id( $form_id ) );
-		$args       = isset( $_POST['item_meta'] ) ? wp_unslash( $_POST['item_meta'] ) : false;
+		$args       = $args->metas;
 
 		if ( ! isset( $is_enabled ) || '1' !== $is_enabled || ! isset( $args ) ) {
 			return;

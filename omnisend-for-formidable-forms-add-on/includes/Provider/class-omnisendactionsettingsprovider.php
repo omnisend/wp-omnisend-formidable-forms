@@ -32,7 +32,7 @@ class OmnisendActionSettingsProvider {
 	 */
 	public function __construct() {
 		$this->settings_mapper = new SettingsMapper();
-		add_filter( 'frm_add_form_settings_section', array( $this, 'create_settings' ), 10, 2 );
+		add_filter( 'frm_add_form_settings_section', array( $this, 'create_settings' ), 10, 1 );
 		add_filter( 'frm_form_options_before_update', array( $this, 'save_settings' ), 20, 2 );
 	}
 
@@ -44,7 +44,7 @@ class OmnisendActionSettingsProvider {
 	 *
 	 * @return array sections
 	 */
-	public function create_settings( $sections, $values ): array {
+	public function create_settings( $sections ): array {
 		$sections[] = array(
 			'name'     => 'Omnisend',
 			'anchor'   => 'omnisend_settings',
