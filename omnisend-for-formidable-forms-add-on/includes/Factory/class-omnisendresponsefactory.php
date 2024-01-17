@@ -11,6 +11,10 @@ namespace Omnisend\FormidableFormsAddon\Factory;
 
 use Omnisend\FormidableFormsAddon\OmnisendResponse;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Omnisend response factory.
  */

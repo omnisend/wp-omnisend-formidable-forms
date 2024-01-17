@@ -11,6 +11,10 @@ namespace Omnisend\FormidableFormsAddon\Mapper;
 
 use Omnisend\FormidableFormsAddon\Actions\OmnisendAddOnAction;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Class SettingsMapper
  */

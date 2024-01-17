@@ -17,6 +17,10 @@ use Omnisend\FormidableFormsAddon\Mapper\FormFieldsMapper;
 use Omnisend\FormidableFormsAddon\OmnisendResponse;
 use Omnisend\FormidableFormsAddon\Validator\ResponseValidator;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Omnisend API Service.
  */

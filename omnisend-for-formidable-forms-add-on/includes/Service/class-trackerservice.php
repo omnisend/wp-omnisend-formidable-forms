@@ -9,6 +9,10 @@ declare(strict_types=1);
 
 namespace Omnisend\FormidableFormsAddon\Service;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Class TrackerService
  *

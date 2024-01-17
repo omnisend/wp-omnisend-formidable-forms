@@ -7,6 +7,10 @@
 
 namespace Omnisend\FormidableFormsAddon;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Class OmnisendResponse
  *

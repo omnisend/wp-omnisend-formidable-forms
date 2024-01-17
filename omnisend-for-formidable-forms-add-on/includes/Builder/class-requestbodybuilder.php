@@ -11,6 +11,10 @@ namespace Omnisend\FormidableFormsAddon\Builder;
 
 use Omnisend\FormidableFormsAddon\Actions\OmnisendAddOnAction;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Class RequestBodyBuilder
  */

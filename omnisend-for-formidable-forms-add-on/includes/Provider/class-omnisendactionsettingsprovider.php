@@ -12,6 +12,10 @@ namespace Omnisend\FormidableFormsAddon\Provider;
 use Omnisend\FormidableFormsAddon\Actions\OmnisendAddOnAction;
 use Omnisend\FormidableFormsAddon\Mapper\SettingsMapper;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Class OmnisendActionSettingsProvider
  */
@@ -40,7 +44,6 @@ class OmnisendActionSettingsProvider {
 	 * Create omnisend tab
 	 *
 	 * @param array $sections tabs.
-	 * @param array $values values.
 	 *
 	 * @return array sections
 	 */
