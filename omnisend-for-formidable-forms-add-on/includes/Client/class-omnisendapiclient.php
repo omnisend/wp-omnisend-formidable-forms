@@ -9,6 +9,10 @@ declare(strict_types=1);
 
 namespace Omnisend\FormidableFormsAddon\Client;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Omnisend Api client.
  */

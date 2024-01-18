@@ -13,6 +13,10 @@ use Omnisend\FormidableFormsAddon\Actions\OmnisendAddOnAction;
 use Omnisend\FormidableFormsAddon\Provider\OmnisendActionSettingsProvider;
 use FrmField;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Class FormFieldsMapper
  */

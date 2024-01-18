@@ -1,14 +1,18 @@
 <?php
-	/**
-	 * Header template for Omnisend settings
-	 *
-	 * @package Omnisend\FormidableFormsAddon\Provider\OmnisendActionSettingsProvider
-	 */
+/**
+ * Header template for Omnisend settings
+ *
+ * @package Omnisend\FormidableFormsAddon\Provider\OmnisendActionSettingsProvider
+ */
 
-	use Omnisend\FormidableFormsAddon\Provider\OmnisendActionSettingsProvider;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-	$setting_code = $this->get_enabled_code_by_form_id( $values['id'] );
-	$welcome_code = OmnisendActionSettingsProvider::get_enabled_welcome_by_form_id( $values['id'] );
+use Omnisend\FormidableFormsAddon\Provider\OmnisendActionSettingsProvider;
+
+$setting_code = $this->get_enabled_code_by_form_id( $values['id'] );
+$welcome_code = OmnisendActionSettingsProvider::get_enabled_welcome_by_form_id( $values['id'] );
 ?>
 
 <div class = 'omnisend-formidable-header'>
@@ -40,7 +44,7 @@
 		<span class = 'information'>
 			<?php esc_html_e( 'After checking this, don’t forget to design your welcome email in Omnisend.', 'omnisend-formidable' ); ?>
 		</span>
-		<a href = '' class = 'omnisend-url' target = '_blank'>
+		<a href = 'https://support.omnisend.com/en/articles/1061818-welcome-email-automation' class = 'omnisend-url' target = '_blank'>
 			<?php esc_html_e( 'Learn more about Welcome automation', 'omnisend-formidable' ); ?>
 		</a>
 	</div>
