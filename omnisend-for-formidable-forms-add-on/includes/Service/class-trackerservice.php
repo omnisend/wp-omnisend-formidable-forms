@@ -37,7 +37,13 @@ class TrackerService {
 			)
 		);
 
-		wp_enqueue_script( 'omnisend-snippet-script', $snippet_path, array(), '1.0.0', true );
-		wp_localize_script( 'omnisend-snippet-script', 'omnisendIdentifiers', $identifiers );
+		add_action(
+			'wp_enqueue_scripts',
+			function () use ( $identifiers, $snippet_path ) {
+				wp_enqueue_script( 'omnisend-snippet-script', $snippet_path, array(), '1.0.0', true );
+				wp_localize_script( 'omnisend-snippet-script', 'omnisendIdentifiers', $identifiers );
+			},
+			10000
+		);
 	}
 }
