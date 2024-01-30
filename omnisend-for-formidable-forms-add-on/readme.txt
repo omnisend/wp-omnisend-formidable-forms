@@ -5,7 +5,7 @@ Tags: formidable forms, form, email marketing, web tracking, subscriber collecti
 Requires at least: 4.7.0
 Tested up to: 6.4
 Requires PHP: 7.1
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv3 or later
 URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -34,7 +34,7 @@ Omnisend for Formidable Forms add-on requires you to install:
 == FAQ ==
 
 = Installation instructions =
-Read [Installation instructions](https://support.omnisend.com/en/articles/8617559-integration-with-formidable-forms)
+Read [Installation instructions](https://support.omnisend.com/en/articles/8814135-integration-with-formidable-forms)
 
 = What are the technical requirements for the plugin installation? =
 * PHP 7.1+
@@ -60,11 +60,8 @@ Read Omnisend [Terms of Use](https://www.omnisend.com/terms)
 7. Convert more visitors with highly-targeted landing pages
 
 == Changelog ==
-
-= 1.0.1 =
-
-* Updated assets
+= 1.0.2 =
+* Update instructions url.
 
 = 1.0.0 =
-
 * Initial release.
