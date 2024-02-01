@@ -58,7 +58,7 @@ $welcome_code = OmnisendActionSettingsProvider::get_enabled_welcome_by_form_id( 
 		</span>
 		<span class = 'information-help'>
 			<?php esc_html_e( 'Having trouble?', 'omnisend-formidable' ); ?>
-			<a href = '' class = 'omnisend-url' target = '_blank'>
+			<a href = 'https://support.omnisend.com/en/articles/8814135-integration-with-formidable-forms' class = 'omnisend-url' target = '_blank'>
 				<?php esc_html_e( 'Explore our help article', 'omnisend-formidable' ); ?>
 			</a>	
 		</span>
