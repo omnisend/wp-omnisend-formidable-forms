@@ -12,9 +12,6 @@ namespace Omnisend\FormidableFormsAddon\Actions;
 use FrmFormAction;
 use FrmForm;
 use FrmEntry;
-use Omnisend\FormidableFormsAddon\Builder\RequestBodyBuilder;
-use Omnisend\FormidableFormsAddon\Mapper\FormFieldsMapper;
-use Omnisend\FormidableFormsAddon\OmnisendResponse;
 use Omnisend\FormidableFormsAddon\Provider\OmnisendActionSettingsProvider;
 use Omnisend\FormidableFormsAddon\Service\OmnisendApiService;
 use Omnisend\FormidableFormsAddon\Service\TrackerService;
@@ -119,19 +116,19 @@ class OmnisendAddOnAction extends FrmFormAction {
 		$form_name = FrmForm::getOne( $form_id )->name;
 
 		/**
-		 * Response object for Omnisend.
+		 * Response array for tracker.
 		 *
 		 * @var OmnisendResponse $response
 		 */
 		$response = $this->omnisend_service->create_omnisend_contact( $form_name, $form_id, $args );
 
-		if ( ! $response->get_success() ) {
+		if ( empty( $response ) ) {
 			return;
 		}
 
 		$this->tracker_service->enable_web_tracking(
-			$response->get_email(),
-			$response->get_phone() ?? '',
+			$response[ self::EMAIL ],
+			$response[ self::PHONE_NUMBER ] ?? '',
 			$this->snippet_path
 		);
 	}

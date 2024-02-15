@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Omnisend for Formidable Forms Add-On
  * Description: A Formidable forms add-on to sync contacts with Omnisend. In collaboration with Omnisnnd for WooCommerce plugin it enables better customer tracking
- * Version: 1.0.4
+ * Version: 1.1.0
  * Author: Omnisend
  * Author URI: https://www.omnisend.com
  * Developer: Omnisend
@@ -21,9 +21,10 @@ use Omnisend\FormidableFormsAddon\Actions\OmnisendAddOnAction;
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-define( 'OMNISEND_FORMIDABLE_ADDON_VERSION', '1.0.1' );
 
-add_action( 'frm_registered_form_actions', array( 'Omnisend_FormidableFormsAddOn_Bootstrap', 'register_actions' ), 10, 1 );
+define( 'OMNISEND_FORMIDABLE_ADDON_NAME', 'Omnisend for Formidable Forms Add-On' );
+define( 'OMNISEND_FORMIDABLE_ADDON_VERSION', '1.1.0' );
+
 spl_autoload_register( array( 'Omnisend_FormidableFormsAddOn_Bootstrap', 'autoloader' ) );
 add_action( 'plugins_loaded', array( 'Omnisend_FormidableFormsAddOn_Bootstrap', 'check_plugin_requirements' ) );
 add_action( 'admin_enqueue_scripts', array( 'Omnisend_FormidableFormsAddOn_Bootstrap', 'load_custom_wp_admin_style' ) );
@@ -77,11 +78,11 @@ class Omnisend_FormidableFormsAddOn_Bootstrap {
 		require_once ABSPATH . '/wp-admin/includes/plugin.php';
 		$formidable_addon_plugin = 'omnisend-for-formidable-forms-add-on/class-omnisend-formidableformsaddon-bootstrap.php';
 
-		$omnisend_plugin = 'omnisend-connect/omnisend-woocommerce.php';
+		$omnisend_plugin = 'omnisend/class-omnisend-core-bootstrap.php';
 
 		if ( ! file_exists( WP_PLUGIN_DIR . '/' . $omnisend_plugin ) || ! is_plugin_active( $omnisend_plugin ) ) {
 			deactivate_plugins( $formidable_addon_plugin );
-			add_action( 'admin_notices', array( 'Omnisend_FormidableFormsAddOn_Bootstrap', 'omnisend_woocommerce_notice' ) );
+			add_action( 'admin_notices', array( 'Omnisend_FormidableFormsAddOn_Bootstrap', 'omnisend_notice' ) );
 
 			return;
 		}
@@ -90,7 +91,7 @@ class Omnisend_FormidableFormsAddOn_Bootstrap {
 
 		if ( is_null( $api_key ) ) {
 			deactivate_plugins( $formidable_addon_plugin );
-			add_action( 'admin_notices', array( 'Omnisend_FormidableFormsAddOn_Bootstrap', 'omnisend_woocommerce_api_key_notice' ) );
+			add_action( 'admin_notices', array( 'Omnisend_FormidableFormsAddOn_Bootstrap', 'omnisend_api_key_notice' ) );
 
 			return;
 		}
@@ -101,20 +102,22 @@ class Omnisend_FormidableFormsAddOn_Bootstrap {
 			deactivate_plugins( $formidable_addon_plugin );
 			add_action( 'admin_notices', array( 'Omnisend_FormidableFormsAddOn_Bootstrap', 'formidable_forms_notice' ) );
 		}
+
+		add_action( 'frm_registered_form_actions', array( 'Omnisend_FormidableFormsAddOn_Bootstrap', 'register_actions' ), 10, 1 );
 	}
 
 	/**
-	 * Display a notice for the missing Omnisend WooCommerce API key.
+	 * Display a notice for the missing Omnisend API key.
 	 */
-	public static function omnisend_woocommerce_api_key_notice() {
-		echo '<div class="error"><p>' . esc_html__( 'Your Email Marketing for WooCommerce by Omnisend is not configured properly. Please configure it firstly', 'omnisend-formidable' ) . '</p></div>';
+	public static function omnisend_api_key_notice() {
+		echo '<div class="error"><p>' . esc_html__( 'Your Omnisend is not configured properly. Please configure it firstly', 'omnisend-formidable' ) . '</p></div>';
 	}
 
 	/**
-	 * Display a notice for the missing Omnisend For WooCommerce Plugin.
+	 * Display a notice for the missing Omnisend Plugin.
 	 */
-	public static function omnisend_woocommerce_notice() {
-		echo '<div class="error"><p>' . esc_html__( 'Plugin Omnisend for WooCommerce is deactivated. Please install and activate', 'omnisend-formidable' ) . '<a href="https://wordpress.org/plugins/omnisend-connect/">' . esc_html__( 'Omnisend for Woocommerce plugin.', 'omnisend-formidable' ) . '</a></p></div>';
+	public static function omnisend_notice() {
+		echo '<div class="error"><p>' . esc_html__( 'Plugin Omnisend is deactivated. Please install and activate ', 'omnisend-formidable' ) . '<a href="https://wordpress.org/plugins/omnisend/">' . esc_html__( 'Omnisend plugin.', 'omnisend-formidable' ) . '</a></p></div>';
 	}
 
 	/**
@@ -128,7 +131,7 @@ class Omnisend_FormidableFormsAddOn_Bootstrap {
 	 * Loading styles in admin.
 	 */
 	public static function load_custom_wp_admin_style() {
-		wp_register_style( 'omnisend-formidable-forms-addon', plugins_url( 'css/omnisend-formidableforms-addon.css', __FILE__ ), array(), '1.0.0' );
+		wp_register_style( 'omnisend-formidable-forms-addon', plugins_url( 'css/omnisend-formidableforms-addon.css', __FILE__ ), array(), OMNISEND_FORMIDABLE_ADDON_VERSION );
 		wp_enqueue_style( 'omnisend-formidable-forms-addon' );
 	}
 }

@@ -10,12 +10,10 @@ declare(strict_types=1);
 namespace Omnisend\FormidableFormsAddon\Service;
 
 use Omnisend\FormidableFormsAddon\Actions\OmnisendAddOnAction;
-use Omnisend\FormidableFormsAddon\Builder\RequestBodyBuilder;
-use Omnisend\FormidableFormsAddon\Client\OmnisendApiClient;
-use Omnisend\FormidableFormsAddon\Factory\OmnisendResponseFactory;
 use Omnisend\FormidableFormsAddon\Mapper\FormFieldsMapper;
-use Omnisend\FormidableFormsAddon\OmnisendResponse;
+use Omnisend\FormidableFormsAddon\Mapper\ContactMapper;
 use Omnisend\FormidableFormsAddon\Validator\ResponseValidator;
+use Omnisend\SDK\V1\Omnisend;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -25,14 +23,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Omnisend API Service.
  */
 class OmnisendApiService {
-
-	/**
-	 * Omnisend API client.
-	 *
-	 * @var OmnisendApiClient
-	 */
-	private $client;
-
 	/**
 	 * Form fields mapper.
 	 *
@@ -41,35 +31,37 @@ class OmnisendApiService {
 	private $fields_mapper;
 
 	/**
-	 * Request body builder.
+	 * Contact mapper.
 	 *
-	 * @var RequestBodyBuilder
+	 * @var ContactMapper
 	 */
-	private $body_builder;
+	private $contact_mapper;
 
 	/**
-	 * Response factory
-	 *
-	 * @var OmnisendResponseFactory
-	 */
-	private $response_factory;
-
-	/**
-	 *  Response validator.
+	 * Response validator
 	 *
 	 * @var ResponseValidator
 	 */
 	private $response_validator;
 
 	/**
+	 * Omnisend client
+	 *
+	 * @var Omnisend
+	 */
+	private $client;
+
+	/**
 	 * OmnisendApiService class constructor.
 	 */
 	public function __construct() {
 		$this->fields_mapper      = new FormFieldsMapper();
-		$this->client             = new OmnisendApiClient();
-		$this->body_builder       = new RequestBodyBuilder();
-		$this->response_factory   = new OmnisendResponseFactory();
+		$this->contact_mapper     = new ContactMapper();
 		$this->response_validator = new ResponseValidator();
+		$this->client             = Omnisend::get_client(
+			OMNISEND_FORMIDABLE_ADDON_NAME,
+			OMNISEND_FORMIDABLE_ADDON_VERSION
+		);
 	}
 
 	/**
@@ -79,26 +71,27 @@ class OmnisendApiService {
 	 * @param int    $form_id The action settings.
 	 * @param array  $form_data The form data.
 	 *
-	 * @return OmnisendResponse The Omnisend response.
+	 * @return array Tracker data.
 	 */
-	public function create_omnisend_contact( string $form_name, int $form_id, array $form_data ): OmnisendResponse {
-		$mapped_fields_values = $this->fields_mapper->get_field_mappings( $form_id, $form_data );
-		$body                 = $this->body_builder->get_body( $mapped_fields_values, $form_name );
+	public function create_omnisend_contact( string $form_name, int $form_id, array $form_data ): array {
+		$mapper_fields_values = $this->fields_mapper->get_field_mappings( $form_id, $form_data );
 
-		if ( empty( $body ) ) {
-			return $this->response_factory->create( false );
+		if ( $mapper_fields_values[ OmnisendAddOnAction::EMAIL ] == null ) {
+			error_log('Omnisend error: email not mapped/submitted'); // phpcs:ignore
+
+			return array();
 		}
 
-		$response = $this->client->create_omnisend_contact( $body );
+		$contact  = $this->contact_mapper->get_omnisend_contact( $mapper_fields_values, $form_name );
+		$response = $this->client->create_contact( $contact, $form_name );
 
-		if ( ! $this->response_validator->validate_response( $response ) ) {
-			return $this->response_factory->create( false );
+		if ( ! $this->response_validator->is_valid( $response ) ) {
+			return array();
 		}
 
-		return $this->response_factory->create(
-			true,
-			$mapped_fields_values[ OmnisendAddOnAction::EMAIL ],
-			$mapped_fields_values[ OmnisendAddOnAction::PHONE_NUMBER ]
+		return array(
+			OmnisendAddOnAction::EMAIL        => $mapper_fields_values[ OmnisendAddOnAction::EMAIL ],
+			OmnisendAddOnAction::PHONE_NUMBER => $mapper_fields_values[ OmnisendAddOnAction::PHONE_NUMBER ],
 		);
 	}
 }
