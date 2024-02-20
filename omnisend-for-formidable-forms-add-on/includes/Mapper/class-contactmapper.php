@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class ContactMapper {
 	private const CUSTOM_PREFIX  = 'formidable_forms';
-	private const CONSENT_PREFIX = 'formidable-forms';
+	private const CONSENT_PREFIX = 'formidable-forms-';
 	private const CUSTOM_FIELDS  = 'customFields';
 	private const DATE_FORMAT    = 'Y-m-d\Th:i:s\Z';
 
@@ -51,13 +51,13 @@ class ContactMapper {
 		}
 
 		if ( isset( $mapped_fields[ OmnisendAddOnAction::EMAIL_CONSENT ] ) ) {
-			$contact->set_email_consent( self::CONSENT_PREFIX );
-			$contact->set_email_opt_in( gmdate( self::DATE_FORMAT ) );
+			$contact->set_email_consent( self::CONSENT_PREFIX . $form_name );
+			$contact->set_email_opt_in( self::CONSENT_PREFIX . $form_name );
 		}
 
 		if ( isset( $mapped_fields[ OmnisendAddOnAction::PHONE_CONSENT ] ) ) {
-			$contact->set_phone_consent( self::CONSENT_PREFIX );
-			$contact->set_phone_opt_in( gmdate( self::DATE_FORMAT ) );
+			$contact->set_phone_consent( self::CONSENT_PREFIX . $form_name );
+			$contact->set_phone_opt_in( self::CONSENT_PREFIX . $form_name );
 		}
 
 		if ( array_key_exists( self::CUSTOM_FIELDS, $mapped_fields ) ) {
