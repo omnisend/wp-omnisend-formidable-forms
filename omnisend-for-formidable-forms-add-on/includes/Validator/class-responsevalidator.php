@@ -1,6 +1,6 @@
 <?php
 /**
- * Omnisend API response validator
+ * Omnisend Response Validator
  *
  * @package OmnisendFormidableFormsPlugin
  */
@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Omnisend\FormidableFormsAddon\Validator;
 
+use Omnisend\SDK\V1\CreateContactResponse;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -16,35 +18,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Class ResponseValidator
  *
- * Omnisend API response validator.
- *
  * @package Omnisend\FormidableFormsAddon\Validator
  */
 class ResponseValidator {
 
 	/**
-	 * Validates the API response.
+	 * Validates response.
 	 *
-	 * @param mixed $response The API response.
+	 * @param CreateContactResponse $response
 	 *
-	 * @return bool True if the response is valid, false otherwise.
+	 * @return bool
 	 */
-	public function validate_response( $response ): bool {
-		if ( is_wp_error( $response ) ) {
-			if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-				error_log( 'wp_remote_post error: ' . $response->get_error_message() );
-			}
+	public function is_valid( CreateContactResponse $response ): bool {
+		if ( ! empty( $response->get_wp_error()->get_error_message() ) ) {
+			error_log( 'Error in after_submission: ' . $response->get_wp_error()->get_error_message()); // phpcs:ignore
 
 			return false;
 		}
 
-		$http_code = wp_remote_retrieve_response_code( $response );
-		if ( $http_code >= 400 ) {
-			$body = wp_remote_retrieve_body( $response );
-			if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-				error_log( "HTTP error: {$http_code} - " . wp_remote_retrieve_response_message( $response ) . " - {$body}" );
-			}
-
+		if ( empty( $response->get_contact_id() ) ) {
 			return false;
 		}
 

@@ -34,8 +34,8 @@ class FormFieldsMapper {
 		OmnisendAddOnAction::POSTAL_CODE => 'zip',
 	);
 	private const DEFAULT_VALUES  = array(
-		OmnisendAddOnAction::EMAIL        => '',
-		OmnisendAddOnAction::PHONE_NUMBER => '',
+		OmnisendAddOnAction::EMAIL        => null,
+		OmnisendAddOnAction::PHONE_NUMBER => null,
 	);
 
 	/**
@@ -65,8 +65,6 @@ class FormFieldsMapper {
 			if ( in_array( $key, $consent_fields, true ) ) {
 				if ( is_array( $form_fields[ $field_key ] ) ) {
 					$values[ $key ] = 'subscribed';
-				} else {
-					$values[ $key ] = 'nonSubscribed';
 				}
 
 				unset( $form_fields[ $field_key ] );
