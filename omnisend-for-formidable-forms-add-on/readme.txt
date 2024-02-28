@@ -64,8 +64,6 @@ Read Omnisend [Terms of Use](https://www.omnisend.com/terms)
 = 1.1.0 =
 * Update to use Omnisend plugin
 
-= 1.0.5 =
-* Update banner image & text
 
 = 1.0.4 =
 * Update plugin icon
