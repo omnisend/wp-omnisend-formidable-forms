@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Omnisend for Formidable Forms Add-On
  * Description: A Formidable forms add-on to sync contacts with Omnisend. In collaboration with Omnisnnd for WooCommerce plugin it enables better customer tracking
- * Version: 1.1.2
+ * Version: 1.1.3
  * Author: Omnisend
  * Author URI: https://www.omnisend.com
  * Developer: Omnisend
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'OMNISEND_FORMIDABLE_ADDON_NAME', 'Omnisend for Formidable Forms Add-On' );
-define( 'OMNISEND_FORMIDABLE_ADDON_VERSION', '1.1.2' );
+define( 'OMNISEND_FORMIDABLE_ADDON_VERSION', '1.1.3' );
 
 spl_autoload_register( array( 'Omnisend_FormidableFormsAddOn_Bootstrap', 'autoloader' ) );
 add_action( 'plugins_loaded', array( 'Omnisend_FormidableFormsAddOn_Bootstrap', 'check_plugin_requirements' ) );
@@ -87,7 +87,7 @@ class Omnisend_FormidableFormsAddOn_Bootstrap {
 			return;
 		}
 
-		$api_key = get_option( 'omnisend_api_key', null );
+		$api_key = get_option( 'omni_send_core_api_key', null );
 
 		if ( is_null( $api_key ) ) {
 			deactivate_plugins( $formidable_addon_plugin );
