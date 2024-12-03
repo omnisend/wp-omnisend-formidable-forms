@@ -110,21 +110,21 @@ class Omnisend_FormidableFormsAddOn_Bootstrap {
 	 * Display a notice for the missing Omnisend API key.
 	 */
 	public static function omnisend_api_key_notice() {
-		echo '<div class="error"><p>' . esc_html__( 'Your Omnisend is not configured properly. Please configure it firstly', 'omnisend-formidable' ) . '</p></div>';
+		echo '<div class="error"><p>' . esc_html__( 'Your Omnisend is not configured properly. Please configure it firstly', 'omnisend-for-formidable-forms-add-on' ) . '</p></div>';
 	}
 
 	/**
 	 * Display a notice for the missing Omnisend Plugin.
 	 */
 	public static function omnisend_notice() {
-		echo '<div class="error"><p>' . esc_html__( 'Plugin Omnisend is deactivated. Please install and activate ', 'omnisend-formidable' ) . '<a href="https://wordpress.org/plugins/omnisend/">' . esc_html__( 'Omnisend plugin.', 'omnisend-formidable' ) . '</a></p></div>';
+		echo '<div class="error"><p>' . esc_html__( 'Plugin Omnisend is deactivated. Please install and activate ', 'omnisend-for-formidable-forms-add-on' ) . '<a href="https://wordpress.org/plugins/omnisend/">' . esc_html__( 'Omnisend plugin.', 'omnisend-for-formidable-forms-add-on' ) . '</a></p></div>';
 	}
 
 	/**
 	 * Display a notice for the missing Formidable Forms plugin.
 	 */
 	public static function formidable_forms_notice() {
-		echo '<div class="error"><p>' . esc_html__( 'Plugin Omnisend for Formidable Forms Add-On is deactivated. Please install and activate Formidable forms plugin.', 'omnisend-formidable' ) . '</p></div>';
+		echo '<div class="error"><p>' . esc_html__( 'Plugin Omnisend for Formidable Forms Add-On is deactivated. Please install and activate Formidable forms plugin.', 'omnisend-for-formidable-forms-add-on' ) . '</p></div>';
 	}
 
 	/**

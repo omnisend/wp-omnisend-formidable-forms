@@ -21,45 +21,45 @@ $welcome_code = OmnisendActionSettingsProvider::get_enabled_welcome_by_form_id( 
 			<input type='hidden' value='0' name='<?php echo esc_attr( $setting_code ); ?>'>
 				<input type='checkbox' id = '<?php echo esc_attr( $setting_code ); ?>' value = '1' name = '<?php echo esc_attr( $setting_code ); ?>' <?php checked( '1', get_option( $setting_code ) ); ?>>
 				<label for = '<?php echo esc_attr( $setting_code ); ?>' />
-					<?php esc_html_e( 'Send form data to Omnisend', 'omnisend-formidable' ); ?>
+					<?php esc_html_e( 'Send form data to Omnisend', 'omnisend-for-formidable-forms-add-on' ); ?>
 				</label>
 		</label>
 		<span class = 'information'>
-			<?php esc_html_e( 'Check this to see all data collected through your form in Omnisend', 'omnisend-formidable' ); ?>
+			<?php esc_html_e( 'Check this to see all data collected through your form in Omnisend', 'omnisend-for-formidable-forms-add-on' ); ?>
 		</span>
 	</div>
 
 	<div class = 'option-two'>
-		<h3 class = 'information-header'><?php esc_html_e( 'Welcome email', 'omnisend-formidable' ); ?></h3>
+		<h3 class = 'information-header'><?php esc_html_e( 'Welcome email', 'omnisend-for-formidable-forms-add-on' ); ?></h3>
 		<span>
-			<?php esc_html_e( 'Check this to automatically send your custom welcome email, created in omnisend, to subscribers, joining through Formidable Forms.', 'omnisend-formidable' ); ?>
+			<?php esc_html_e( 'Check this to automatically send your custom welcome email, created in omnisend, to subscribers, joining through Formidable Forms.', 'omnisend-for-formidable-forms-add-on' ); ?>
 		</span>
 		<label class='switch mail'>
 			<input type='hidden' value='0' name='<?php echo esc_attr( $welcome_code ); ?>'>
 				<input type='checkbox' id = '<?php echo esc_attr( $welcome_code ); ?>' value = '1' name = '<?php echo esc_attr( $welcome_code ); ?>' <?php checked( '1', get_option( $welcome_code ) ); ?>>
 			<label for = '<?php echo esc_attr( $welcome_code ); ?>' />
-				<?php esc_html_e( 'Send a welcome email to new subscribers', 'omnisend-formidable' ); ?>
+				<?php esc_html_e( 'Send a welcome email to new subscribers', 'omnisend-for-formidable-forms-add-on' ); ?>
 			</label>
 		</label>
 		<span class = 'information'>
-			<?php esc_html_e( 'After checking this, don’t forget to design your welcome email in Omnisend.', 'omnisend-formidable' ); ?>
+			<?php esc_html_e( 'After checking this, don’t forget to design your welcome email in Omnisend.', 'omnisend-for-formidable-forms-add-on' ); ?>
 		</span>
 		<a href = 'https://support.omnisend.com/en/articles/1061818-welcome-email-automation' class = 'omnisend-url' target = '_blank'>
-			<?php esc_html_e( 'Learn more about Welcome automation', 'omnisend-formidable' ); ?>
+			<?php esc_html_e( 'Learn more about Welcome automation', 'omnisend-for-formidable-forms-add-on' ); ?>
 		</a>
 	</div>
 
 	<div class = 'additional-information'>
 		<h3 class = 'information-header'>
-			<?php esc_html_e( 'Field mapping', 'omnisend-formidable' ); ?>
+			<?php esc_html_e( 'Field mapping', 'omnisend-for-formidable-forms-add-on' ); ?>
 		</h3>
 		<span class = 'information'>
-			<?php esc_html_e( "Field mapping lets you align your Formidable Forms fields with Omnisend. It's important to match them correctly, so the information collected through Formidable Forms goes into the right place in Omnisend.", 'omnisend-formidable' ); ?>
+			<?php esc_html_e( "Field mapping lets you align your Formidable Forms fields with Omnisend. It's important to match them correctly, so the information collected through Formidable Forms goes into the right place in Omnisend.", 'omnisend-for-formidable-forms-add-on' ); ?>
 		</span>
 		<span class = 'information-help'>
-			<?php esc_html_e( 'Having trouble?', 'omnisend-formidable' ); ?>
+			<?php esc_html_e( 'Having trouble?', 'omnisend-for-formidable-forms-add-on' ); ?>
 			<a href = 'https://support.omnisend.com/en/articles/8814135-integration-with-formidable-forms' class = 'omnisend-url' target = '_blank'>
-				<?php esc_html_e( 'Explore our help article', 'omnisend-formidable' ); ?>
+				<?php esc_html_e( 'Explore our help article', 'omnisend-for-formidable-forms-add-on' ); ?>
 			</a>	
 		</span>
 	</div>
