@@ -5,7 +5,7 @@ Tags: formidable forms, form, email marketing, web tracking, subscriber collecti
 Requires at least: 4.7.0
 Tested up to: 6.7
 Requires PHP: 7.1
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 License: GPLv3 or later
 URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -59,6 +59,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 7. Convert more visitors with highly-targeted landing pages
 
 == Changelog ==
+
+= 1.1.4 =
+* Update tested WP version and security fixes
+
 = 1.1.3 =
 * Fix connection without WooCommerce issue
 
