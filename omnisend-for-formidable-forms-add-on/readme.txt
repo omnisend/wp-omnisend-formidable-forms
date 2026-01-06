@@ -3,9 +3,9 @@ Plugin Name: Omnisend for Formidable Forms Add-On
 Contributors: Omnisend
 Tags: formidable forms, form, email marketing, web tracking, subscriber collection
 Requires at least: 4.7.0
-Tested up to: 6.7
+Tested up to: 6.9
 Requires PHP: 7.1
-Stable tag: 1.1.6
+Stable tag: 1.1.7
 License: GPLv3 or later
 URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -59,6 +59,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 7. Convert more visitors with highly-targeted landing pages
 
 == Changelog ==
+
+= 1.1.7 =
+* Verified compatibility with WordPress 6.9
 
 = 1.1.6 =
 * Update screenshots
