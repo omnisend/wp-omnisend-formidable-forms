@@ -66,8 +66,6 @@ class OmnisendActionSettingsProvider {
 	 * @return void
 	 */
 	public function show_settings( $values ): void {
-		$fields = array();
-
 		require __DIR__ . '/../Templates/header.php';
 
 		foreach ( OmnisendAddOnAction::OMNISEND_FIELDS as $key => $name ) {
