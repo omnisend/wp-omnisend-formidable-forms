@@ -23,7 +23,6 @@ class ContactMapper {
 	private const CUSTOM_PREFIX  = 'formidable_forms';
 	private const CONSENT_PREFIX = 'formidable-forms-';
 	private const CUSTOM_FIELDS  = 'customFields';
-	private const DATE_FORMAT    = 'Y-m-d\Th:i:s\Z';
 
 	/**
 	 * Get Contact object
